@@ -8,8 +8,6 @@ import io.smallrye.mutiny.unchecked.Unchecked;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.logging.Filter;
-
 @Slf4j
 @ApplicationScoped
 public class FilteredSymbolsService {
