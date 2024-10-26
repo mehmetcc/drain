@@ -31,7 +31,7 @@ public class FilteredSymbolsService {
                 .onItem()
                 .transform(object -> Boolean.TRUE)
                 .onFailure()
-                .invoke(this::log);
+                .recoverWithUni(this::log);
     }
 
     private Uni<String> json(FilteredSymbols symbols) {
