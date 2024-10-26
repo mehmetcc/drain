@@ -1,24 +1,29 @@
 package org.zulkarneyn;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.ToString;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-
+@ToString
 public class FilteredSymbols {
-    private final List<String> symbols;
+    public Set<String> symbols;
 
     public FilteredSymbols() {
-        this.symbols = new ArrayList<>();
+        this.symbols = new HashSet<>();
     }
 
-    public String toJson() throws JsonProcessingException {
-        return new ObjectMapper().writeValueAsString(symbols);
+    public FilteredSymbols add(String value) {
+        symbols.add(value);
+        return this;
     }
 
-    public FilteredSymbols fromJson(final String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, FilteredSymbols.class);
+    public static FilteredSymbols empty() {
+        return new FilteredSymbols();
+    }
+
+    public FilteredSymbols add(Set<String> values) {
+        symbols.addAll(values);
+        return this;
     }
 }
